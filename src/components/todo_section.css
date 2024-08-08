@@ -1,0 +1,17 @@
+.todo-container{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+h3{
+    font-size: 1.5rem;
+}
+
+span{
+    font-size: 0.8rem;
+}
+
+.todo-component{
+    margin-top: 1rem;
+}

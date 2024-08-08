@@ -1,0 +1,23 @@
+.tasks_container{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+input[type='checkbox']{
+    width: 30px;
+    height: 50px;
+}
+
+label{
+    background-color: #1111118a;
+    padding: 0.5rem;
+    color: #fff;
+}
+
+button{
+    img{
+        width: 30px;
+        height: 30px;
+    }
+}
