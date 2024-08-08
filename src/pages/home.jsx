@@ -18,6 +18,13 @@ export default function home() {
     .then(response => set_tasks_section(response.data))
   },[])
 
+  function update (){
+    axios.put('https://66b2b22d7fba54a5b7ea4774.mockapi.io/api/todo-section/1' , {
+      color : "red"
+    })
+    .then(response => response.data)
+  }
+
   const updateTask = () => {
     axios.put('https://66b2b22d7fba54a5b7ea4774.mockapi.io/api/todo/1' , {
       checked : null
@@ -36,7 +43,7 @@ export default function home() {
             color={task.color}
           />
         ))}
-        <button onClick={updateTask}> update </button>
+        <button onClick={update}> update </button>
     </>
   );
 }
