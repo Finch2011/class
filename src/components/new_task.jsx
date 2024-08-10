@@ -5,7 +5,7 @@ import { TaskContext } from "../context/TaskContext";
 import axios from "axios";
 
 export default function new_task() {
-  const { set_toggle_new_task } = useContext(TaskContext);
+  const { set_toggle_new_task , set_update_task_list } = useContext(TaskContext);
 
   const [task_title, set_task_title] = useState("");
   const [task_state, set_task_state] = useState("checkbox");
@@ -19,9 +19,11 @@ export default function new_task() {
         })
         .then((response) => response.data);
       set_toggle_new_task((prev_state) => (prev_state = false));
+      set_update_task_list((prev_state) => (prev_state = true))
     } catch (error) {
       console.log(error);
       set_toggle_new_task((prev_state) => (prev_state = true));
+      set_update_task_list((prev_state) => (prev_state = false))
     }
   };
 
