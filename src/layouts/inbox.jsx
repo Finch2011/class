@@ -1,12 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef , useContext } from "react";
 
 import "@styles/inbox.scss";
 import NewTask from "@components/new_task";
 import axios from "axios";
+import { InboxContext } from "@context/InboxContext";
 
 export default function Inbox() {
   const [tasks, set_tasks] = useState([]);
-
+  const {task , setTask } = useContext(InboxContext)
   const [check_state, set_check_state] = useState(false);
 
   useEffect(() => {
@@ -21,8 +22,9 @@ export default function Inbox() {
       }
     };
     fetch_tasks();
+    console.log(task)
   }, []);
-
+  
   return (
     <div className="inbox_container">
       <label htmlFor="todo-1"> this is todo </label>

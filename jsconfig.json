@@ -5,6 +5,7 @@
             "@layouts/*" : ["layouts/*"],
             "@utils/*" : ["utils/*"],
             "@base/*" : ["base/*"],
+            "@context/*" : ["context/*"],
             "@fonts/*" : ["fonts/*"],
             "@components/*" : ["components/*"],
             "@styles/*" : ["styles/*"],

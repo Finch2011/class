@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import "@styles/new_task.scss";
 import axios from "axios";
+import { InboxContext } from "@context/InboxContext";
 
 export default function NewTask() {
   const [isMesssageOpen, setIsMessageOpen] = useState(false);
   const [task_title, set_task_title] = useState("");
   const [task_body, set_task_body] = useState("");
-
+  const {task , setTask } = useContext(InboxContext)
   const add_task = async () => {
     if (task_title !== "" && task_body !== "") {
       try {
@@ -19,6 +20,8 @@ export default function NewTask() {
           }
         );
         console.log(response.data);
+        setTask(true)
+        console.log(task)
       } catch (error) {
         console.log(error);
       }
