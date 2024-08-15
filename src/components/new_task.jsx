@@ -21,6 +21,7 @@ export default function NewTask() {
         );
         console.log(response.data);
         setTask(true)
+        setIsMessageOpen(false)
         console.log(task)
       } catch (error) {
         console.log(error);
