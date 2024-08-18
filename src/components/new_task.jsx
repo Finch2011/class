@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import "@styles/new_task.scss";
 import axios from "axios";
@@ -8,7 +8,8 @@ export default function NewTask() {
   const [isMesssageOpen, setIsMessageOpen] = useState(false);
   const [task_title, set_task_title] = useState("");
   const [task_body, set_task_body] = useState("");
-  const {task , setTask } = useContext(InboxContext)
+  const {task , setTask , fetch_tasks } = useContext(InboxContext)
+  const boxMessage = useRef();
   const add_task = async () => {
     if (task_title !== "" && task_body !== "") {
       try {
@@ -19,16 +20,29 @@ export default function NewTask() {
             body: task_body,
           }
         );
+        fetch_tasks()
         console.log(response.data);
-        setTask(true)
         setIsMessageOpen(false)
-        console.log(task)
       } catch (error) {
         console.log(error);
       }
     }
   };
+  
+  
+  
+  useEffect(()=>{
+    const handelkey = (event) =>{
 
+      if(event.key === "0"){
+        setIsMessageOpen(prevstate => !prevstate)
+    }
+  }
+  document.addEventListener('keydown' , handelkey)
+  return () =>{
+    document.removeEventListener('keydown' , handelkey)
+  }
+ }, [])
   return (
     <div className="new_task_container">
       {isMesssageOpen && (
@@ -40,7 +54,7 @@ export default function NewTask() {
             >
               <img src="/close.png" alt="close task icon" />
             </button>
-            <div className="popup_box">
+            <div className="popup_box" ref={boxMessage}>
               <input
                 type="text"
                 placeholder="To-do name"

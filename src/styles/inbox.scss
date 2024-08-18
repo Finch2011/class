@@ -8,7 +8,7 @@
   width: 100%;
   height: 100dvh;
   margin-top: 100px;
-
+  color: white;
   .tasks_wrapper {
     display: flex;
     flex-direction: column;
@@ -16,17 +16,33 @@
     align-items: center;
     gap: 1rem;
   }
-
+.style-div{
+  border: 1px solid white;
+  width: 300px;
+  height: max-content;
+  padding: 2rem;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  .input{
+    margin-right: 10px;
+  }
+  p{
+    font-size: 15px;
+    color: gray;
+    font-weight:bold;
+  }
   .tasks_container {
     display: flex;
-    width: 300px;
+    justify-content: center;
+    align-items: center;
     font-size: 1.2rem;
-
     label {
       color: $white;
     }
     
   }
+}
 }
 
 .empty_tasks_container {
