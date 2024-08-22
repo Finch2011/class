@@ -14,10 +14,11 @@ export default function NewTask() {
     if (task_title !== "" && task_body !== "") {
       try {
         const response = await axios.post(
-          "https://66b2b22d7fba54a5b7ea4774.mockapi.io/api/todo",
+          "https://66ab8e13636a4840d7cb29a3.mockapi.io/todo",
           {
             title: task_title,
             body: task_body,
+            checked : false
           }
         );
         fetch_tasks()

@@ -9,7 +9,7 @@ export default function TaskProvider({ children }) {
   const fetch_tasks = async () => {
     try {
       const response = await axios.get(
-        "https://66b2b22d7fba54a5b7ea4774.mockapi.io/api/todo"
+        "https://66ab8e13636a4840d7cb29a3.mockapi.io/todo"
       );
       set_tasks(response.data);
     } catch (error) {
