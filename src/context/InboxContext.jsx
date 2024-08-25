@@ -16,8 +16,19 @@ export default function TaskProvider({ children }) {
       console.log(error);
     }
   };
+  const Bin = async (task) =>{
+    try {
+      const response = await axios.delete(
+        `https://66ab8e13636a4840d7cb29a3.mockapi.io/todo/${task.id}`,
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.log(error)
+    }
+    
+  }
   return (
-    <InboxContext.Provider value={{tasks , set_tasks , fetch_tasks }}>
+    <InboxContext.Provider value={{tasks , set_tasks , fetch_tasks , Bin }}>
       {children}
     </InboxContext.Provider>
   );

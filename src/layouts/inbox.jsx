@@ -6,12 +6,13 @@ import axios from "axios";
 import { InboxContext } from "@context/InboxContext";
 
 export default function Inbox() {
-  const { tasks, set_tasks, fetch_tasks } = useContext(InboxContext);
+  const { tasks, set_tasks, fetch_tasks , Bin } = useContext(InboxContext);
   const [check_state, set_check_state] = useState(false);
   useEffect(() => {
     fetch_tasks();
+    Bin();
   }, []);
-
+  
   const fetchUpdata = async (task) => {
     const updatedTasks = tasks.map((data) =>
       data.id === task.id ? { ...data, checked: !task.checked } : data
@@ -29,7 +30,8 @@ export default function Inbox() {
       console.log(error);
     }
   };
-
+  
+  
   return (
     <div className="inbox_container">
       <div className="tasks_wrapper">
@@ -48,6 +50,10 @@ export default function Inbox() {
               <div className="tasks_container" key={task.id}>
                 <p>{task.body}</p>
               </div>
+              <img onClick={()=>{
+                Bin(task)  
+              }}
+              className="img-bin" src="./bin.png" alt="" />
             </div>
           ))
         ) : (
